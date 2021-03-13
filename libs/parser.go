@@ -40,7 +40,8 @@ func JsonCollectionToYaml (collectionJson Collection) (string, error){
 
 	var collectionYaml = CollectionYaml {
 		SwaggerVersion: SWAGGER_VERSION,
-		SwaggerInfo: swaggerInfo}
+		SwaggerInfo: swaggerInfo,
+		SwaggerPath: PATHS}
 
 
 	yamlData, err := yaml.Marshal(&collectionYaml)

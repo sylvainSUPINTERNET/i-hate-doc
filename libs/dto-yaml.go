@@ -4,6 +4,7 @@ package parser
 type CollectionYaml struct {
 	SwaggerVersion string `yaml:"swagger"`
 	SwaggerInfo SwaggerInfo `yaml:"info"`
+	SwaggerPath string `yaml:"path"`
 }
 
 
