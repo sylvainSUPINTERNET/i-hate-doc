@@ -22,5 +22,12 @@ func main() {
 		os.Exit(1)
 	}
 
-	parser.JsonCollectionToYaml(collectionJson)
+	yamlData, errYamlConvert := parser.JsonCollectionToYaml(collectionJson)
+	
+	if errYamlConvert != nil {
+		fmt.Println(fmt.Sprintf(" ! * %s", errYamlConvert))
+		os.Exit(1)
+	}
+
+	fmt.Println(yamlData)
 }

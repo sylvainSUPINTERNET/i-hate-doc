@@ -6,7 +6,7 @@ import ("fmt"
 		"os"
 		"encoding/json"
 		"io/ioutil"
-		_"gopkg.in/yaml.v2"
+		"gopkg.in/yaml.v2"
 )
 
 
@@ -33,5 +33,21 @@ func JsonCollectionParse (filePath string) (Collection, error) {
 }
 
 func JsonCollectionToYaml (collectionJson Collection) (string, error){
-	return "", nil
+	var swaggerInfo = SwaggerInfo {
+		MetaDataApiVersion: INFO_API_VERSION_DEFAULT,
+		MetaDataTitle: INFO_TILTE_DEFAULT,
+		MetaDataDescription: INFO_DESCRIPTION_DEFAULT}
+
+	var collectionYaml = CollectionYaml {
+		SwaggerVersion: SWAGGER_VERSION,
+		SwaggerInfo: swaggerInfo}
+
+
+	yamlData, err := yaml.Marshal(&collectionYaml)
+	
+	if err != nil {
+		return "", errors.New(ERROR_CONVERT_TO_YAML)
+	}
+
+	return string(yamlData), nil
 }
