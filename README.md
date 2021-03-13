@@ -2,6 +2,5 @@
 
 
 ``` shell
-$ go build ./
-$ .\openapi-generator.exe <collection_from_postman.json>
+$ go install && go build ./ && .\openapi-generator.exe <collection_from_postman.json>
 ```
