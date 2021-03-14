@@ -63,8 +63,8 @@ func JsonCollectionToYaml (collectionJson Collection) (string, error){
 
 
 func generatePathsContent(collectionYaml CollectionYaml, collectionJson Collection, channel chan []byte) error {
+	pathsContent := make(map[string]interface{})
 
-	
 	for _, v := range(collectionJson.Item) {
 		parsedUrl := strings.ToLower(v.Request.Url.Raw)
 		u, err := url.Parse(parsedUrl)
@@ -76,11 +76,19 @@ func generatePathsContent(collectionYaml CollectionYaml, collectionJson Collecti
 		host, port, _ := net.SplitHostPort(u.Host)
 		// TODO add this to swagger host section
 		log.Println(" > ", u.Path , " - host : ", host, " - port :", port )
+		
+
+		pathDetail := make(map[string]interface{})
+		pathsContent[u.Path] = pathDetail
+
+		methodDetail := make(map[string]interface{})
+		pathDetail[strings.ToLower(v.Request.Method)] = methodDetail
+
+
 	}
 
-	pathsContent := make(map[string]string)
-	pathsContent["test"] = "sylai"
 	collectionYaml.SwaggerPath = pathsContent
+
 
 	yamlData, err := yaml.Marshal(&collectionYaml)
 

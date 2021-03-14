@@ -8,7 +8,7 @@ package parser
 type CollectionYaml struct {
 	SwaggerVersion string `yaml:"swagger"`
 	SwaggerInfo SwaggerInfo `yaml:"info"`
-	SwaggerPath map[string]string `yaml:"paths"`
+	SwaggerPath map[string]interface{} `yaml:"paths"`
 }
 
 
