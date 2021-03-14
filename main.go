@@ -8,7 +8,6 @@ import (
 
 func main() {	
 	fmt.Println(" > Welcome to OpenAPI generator")
-	
 	filePath, err := parser.ProcessArgs(os.Args[1:])
 	if err != nil {
 		fmt.Println(fmt.Sprintf(" ! * %s", err))
