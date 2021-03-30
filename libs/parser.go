@@ -11,14 +11,31 @@ import ("fmt"
 		"net/url"
 		"net"
 		"log"
+		"flag"
+		_"strings"
 )
 
 
 func ProcessArgs (args []string) (string, error) {
+
 	if len(args) == 0 {
 		return "", errors.New(ERROR_FILE_PATH_ARGUMENT_MISSING)
 	} 
-	return fmt.Sprintf("%s", args[0]), nil
+
+	if  len(args) == 1 {
+		fmt.Println(" > Welcome to OpenAPI generator")
+		return fmt.Sprintf("%s", args[0]), nil
+	}
+
+	if len(args) == 2 {
+		fmt.Println(" > Welcome to Docker env variables extractor")
+
+		var flagExtractor string;
+		flag.StringVar(&flagExtractor, "--extractor", args[1], "extract the variables in your docker-compose environements")
+	}
+
+	return "", nil
+	
 }
 
 func JsonCollectionParse (filePath string) (Collection, error) {
@@ -98,4 +115,8 @@ func generatePathsContent(collectionYaml CollectionYaml, collectionJson Collecti
 
 	channel <- yamlData
 	return nil
+}
+
+func extractVariablesDockerCompose() string {
+	return "salut";
 }

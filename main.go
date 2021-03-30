@@ -4,16 +4,20 @@ import (
 	"fmt"
 	"os"
 	"github.com/sylvainSUPINTERNET/openapi-generator/libs"
+	"strings"
 )
 
 func main() {	
-	fmt.Println(" > Welcome to OpenAPI generator")
+	// Return file path only for YAML
 	filePath, err := parser.ProcessArgs(os.Args[1:])
+
 	if err != nil {
 		fmt.Println(fmt.Sprintf(" ! * %s", err))
 		os.Exit(1)
 	}
 
+
+	// Yaml parser
 	collectionJson, errParseJsonToCollection := parser.JsonCollectionParse(filePath)
 	if errParseJsonToCollection != nil {
 		fmt.Println(fmt.Sprintf(" ! * %s", errParseJsonToCollection))

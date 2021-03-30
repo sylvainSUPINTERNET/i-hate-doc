@@ -1,0 +1,6 @@
+package parser
+
+
+const (
+	DOCKER_ENV_VAR_EXTRACTOR = "DOCKER_ENV_VAR_EXTRACTOR"
+)
